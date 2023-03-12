@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import {  Routes, Route } from "react-router-dom";
+
+import Menu from "./components/Menu";
+import Employees from "./components/Employees";
+import Management from "./components/Management";
+import Homepage from "./components/Homepage";
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div
+        style={{
+          height: "100vh",
+          width: "100%",
+          display: "flex",
+        }}
+      >
+        <Menu />
+        <div
+          style={{
+            flexDirection: "column",
+            display: "flex",
+            width: "100%",
+            height: "100%",
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/Employees" element={<Employees />} />
+            <Route path="/Management" element={<Management />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
